@@ -9,12 +9,13 @@ class UserAdmin(admin.ModelAdmin):
 
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
-    list_display = ('name', 'bio')
+    list_display = ('user', 'bio')
 
 
 @admin.register(Story)
 class StoryAdmin(admin.ModelAdmin):
     list_display = ('title', 'pubdate', 'author')
+    prepopulated_fields = {'slug': ('title',)}
 
 
 @admin.register(Comments)

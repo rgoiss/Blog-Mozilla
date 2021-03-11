@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from appblog.models import Author, Story
+from appblog.models import Story, Author
+from django.views.generic import ListView, DetailView
 
 
 def index(request):
@@ -14,3 +15,17 @@ def index(request):
     }
 
     return render(request, 'index.html', context=context)
+
+
+class StoriesList(ListView):
+    models = Story
+    template_name = 'story_list.html'
+    queryset = Story.objects.all()
+    context_object_name = 'stories'
+
+
+class AuthorsList(ListView):
+    models = Author
+    template_name = 'author_list.html'
+    queryset = Author.objects.all().order_by('-user')[:10]
+    context_object_name = 'authors'

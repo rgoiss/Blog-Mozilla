@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blog</title>
+</head>
+<STYLE>A {text-decoration: none;} </STYLE>
+<body>
+      <div class="sidenav">
+        <a href="{% url 'index' %}"><strong>Home</strong></a><br>
+        <a href="{% url 'all-stories' %}"><strong>All Stories</strong></a><br>
+        <a href="{% url 'all-authors' %}"><strong>All Authors</strong></a><br>
+      </div>
+      {% block content %}{% endblock %}
+</body>
+</html>

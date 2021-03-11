@@ -1,29 +1,33 @@
 import uuid
 from django.db import models
+from django.urls import reverse
 
 
 class User(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=20)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     def __str__(self):
         return self.name
 
 
 class Author(models.Model):
-    name = models.CharField(max_length=20, help_text='Author name')
+    user = models.ForeignKey(
+        'User', on_delete=models.CASCADE, blank=True, null=True
+    )
     bio = models.TextField()
 
     def __str__(self):
-        return self.name
+        return str(self.user)
 
 
 class Story(models.Model):
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=50, unique=True, blank=True)
     report = models.TextField()
     pubdate = models.DateTimeField(auto_now=True, editable=False)
     author = models.ForeignKey(
-        'Author', on_delete=models.CASCADE, blank=True, null=True
+        'User', on_delete=models.CASCADE, blank=True, null=True
     )
 
     class Meta:
