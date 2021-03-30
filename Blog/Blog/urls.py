@@ -8,4 +8,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('appblog/', include('appblog.urls')),
     path('', RedirectView.as_view(url='appblog/', permanent=True)),
+    path('acounts/', include('django.contrib.auth.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

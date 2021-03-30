@@ -24,6 +24,13 @@ class StoriesList(ListView):
     context_object_name = 'stories'
 
 
+class StoriesDetail(DetailView):
+    models = Story
+    template_name = 'story_detail.html'
+    queryset = Story.objects.all()
+    context_object_name = 'detail'
+
+
 class AuthorsList(ListView):
     models = Author
     template_name = 'author_list.html'

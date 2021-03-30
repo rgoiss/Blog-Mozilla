@@ -23,7 +23,7 @@ class Author(models.Model):
 
 class Story(models.Model):
     title = models.CharField(max_length=50)
-    slug = models.SlugField(max_length=50, unique=True, blank=True)
+    slug = models.SlugField(max_length=50)
     report = models.TextField()
     pubdate = models.DateTimeField(auto_now=True, editable=False)
     author = models.ForeignKey(
@@ -36,6 +36,11 @@ class Story(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse(
+            'story-detail', kwargs={'slug': self.slug}
+        )
 
 
 class Comments(models.Model):

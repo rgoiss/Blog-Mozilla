@@ -4,7 +4,7 @@
     <h1>Lista de autores</h1>
     <ul>
     {% for author in authors %}
-        <li><a href="{{ author.get_absolute_url }}">{{ author.user }}</a></li>
+        <li><a href="{{ story.author.get_absolute_url }}">{{ author.user }}</a></li>
     {% empty %}
         <li>Sorry, no author in this list.</li>
     {% endfor %}
