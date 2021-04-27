@@ -1,10 +1,5 @@
 from django.contrib import admin
-from appblog.models import User, Author, Story, Comments
-
-
-@admin.register(User)
-class UserAdmin(admin.ModelAdmin):
-    list_display = ('name', 'id')
+from appblog.models import Author, Story, Comments
 
 
 @admin.register(Author)

@@ -11,4 +11,9 @@ urlpatterns = [
         views.StoriesDetail.as_view(),
         name='story-detail',
     ),
+    path(
+        'allauthors/<int:pk>/',
+        views.ListByAuthor.as_view(),
+        name='sigle-author',
+    ),
 ]

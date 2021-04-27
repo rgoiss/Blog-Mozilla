@@ -3,7 +3,7 @@
 {% block content %}
     <ul>
     {% for story in stories %}
-        <li><a href="{{ story.get_absolute_url }}">{{ story.title }}</a> - {{ story.pubdate }} - <a href="{{ story.get_absolute_url }}">{{ story.author }}</a></li>
+        <li><a href="{{ story.get_absolute_url }}">{{ story.title }}</a> - {{ story.pubdate }} - <a href="{% url 'sigle-author' story.author.pk %}">{{ story.author }}</a></li>
     {% empty %}
         <li>Sorry, no story in this list.</li>
     {% endfor %}
